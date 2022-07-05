@@ -11,6 +11,16 @@ pipeline {
                 sh "python CalcTest.py"
             }
         }
+        stage('Code coverage stage') {
+            steps {
+                sh "coverage run CalcTest.py"
+                sh "coverage html CalcTest.py"
+		publishHTML (target: [
+			reportDir: 'htmlcov',
+			reportFiles: 'index.html'
+			reportName: 'code coverage report'
+            }
+        }
     }
 }
 
