@@ -19,6 +19,7 @@ pipeline {
 			reportDir: 'htmlcov',
 			reportFiles: 'index.html'
 			reportName: 'code coverage report'
+		])
             }
         }
     }
