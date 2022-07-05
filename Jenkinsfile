@@ -17,7 +17,7 @@ pipeline {
                 sh "coverage html CalcTest.py"
 		publishHTML (target: [
 			reportDir: 'htmlcov',
-			reportFiles: 'index.html'
+			reportFiles: 'index.html',
 			reportName: 'code coverage report'
 		])
             }
