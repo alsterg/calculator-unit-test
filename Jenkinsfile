@@ -34,7 +34,7 @@ pipeline {
         }
         stage('Building container') {
             steps {
-                sh "service docker start"
+                sh "service docker start && sleep 3"
                 sh "docker build -t calculator ."
             }
         }
