@@ -32,6 +32,16 @@ pipeline {
 		])
             }
         }
+        stage('Building container') {
+            steps {
+                sh "docker build -t calculator ."
+            }
+        }
+        stage('Pushing container') {
+            steps {
+                sh "docker push 172.18.0.1:5000/calculator"
+            }
+        }
     }
 }
 
