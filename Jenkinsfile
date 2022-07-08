@@ -34,13 +34,12 @@ pipeline {
         }
         stage('Building container') {
             steps {
-                sh "service docker start && sleep 3"
-                sh "docker build -t calculator ."
+                sh "docker build -t calculator:latest ." # TODO: version control
             }
         }
         stage('Pushing container') {
             steps {
-                sh "docker push 172.18.0.1:5000/calculator"
+                sh "docker push 172.18.0.1:5000/calculator:latest" # TODO: resolve host ip
             }
         }
     }
