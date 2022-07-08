@@ -34,6 +34,7 @@ pipeline {
         }
         stage('Building container') {
             steps {
+                sh "service docker start"
                 sh "docker build -t calculator ."
             }
         }
