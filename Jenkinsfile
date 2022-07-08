@@ -34,7 +34,7 @@ pipeline {
         }
         stage('Building container') {
             steps {
-                sh "docker build -t calculator:latest ."  // TODO: version control
+                sh "docker build -t 172.18.0.1:5000/calculator:latest ."  // TODO: version control
             }
         }
         stage('Pushing container') {
