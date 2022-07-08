@@ -1,4 +1,4 @@
 FROM python:3.8
-ADD __pycache__/calculator.cpython-36.pyc .
+ADD calculator.py /
 RUN pip install flask
-CMD python ./calculator.pyc
+CMD python /calculator.pyc
