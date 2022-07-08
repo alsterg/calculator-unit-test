@@ -24,7 +24,7 @@ pipeline {
         }
         stage('Static analysis stage') {
             steps {
-                sh "pylint calculator.py > results.txt"
+                sh "pylint calculator.py > results.txt || true"
 		publishHTML (target: [
 			reportFiles: 'results.txt',
 			reportName: 'static analysis report'
