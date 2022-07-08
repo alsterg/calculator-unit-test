@@ -24,7 +24,11 @@ pipeline {
         }
         stage('Static analysis stage') {
             steps {
-                sh "pylint calculator.py | txt2html --title 'Static code analysis results' --preformat_trigger_lines 0 || true"
+                sh "pylint calculator.py | txt2html --title 'Static code analysis results' --preformat_trigger_lines 0 | tee /tmp/results.html || true"
+		publishHTML (target: [
+			reportFiles: '/tmp/results.html',
+			reportName: 'static analysis report'
+		])
             }
         }
     }
