@@ -3,12 +3,12 @@ pipeline {
     stages {
         stage('Compile stage') {
             steps {
-                sh "python -m compileall calculator.py"
+                sh "python3 -m compileall calculator.py"
             }
         }
         stage('Unit testing stage') {
             steps {
-                sh "python CalcTest.py"
+                sh "python3 CalcTest.py"
             }
         }
         stage('Code coverage stage') {
