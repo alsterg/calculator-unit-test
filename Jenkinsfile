@@ -22,6 +22,15 @@ pipeline {
 		])
             }
         }
+        stage('Static analysis stage') {
+            steps {
+                sh "pylint calculator.py > results.txt"
+		publishHTML (target: [
+			reportFiles: 'results.txt',
+			reportName: 'static analysis report'
+		])
+            }
+        }
     }
 }
 
