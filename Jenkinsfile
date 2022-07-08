@@ -37,9 +37,14 @@ pipeline {
                 sh "docker build -t 172.18.0.1:5000/calculator:latest ."  // TODO: version control
             }
         }
-        stage('Pushing container') {
+        stage('Publishing container') {
             steps {
                 sh "docker push 172.18.0.1:5000/calculator:latest"  // TODO: resolve host ip
+            }
+        }
+        stage('Deploying app to staging') {
+            steps {
+                sh "docker run -d -rm -p 5001:5001 --name calculator 172.18.0.1:5000/calculator:latest"  // TODO: resolve host ip
             }
         }
     }
