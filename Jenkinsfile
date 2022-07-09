@@ -44,7 +44,8 @@ pipeline {
         }
         stage('Deploying app to staging') {
             steps {
-                sh "kubectl apply -f Kubefile"
+                sh "kubectl apply -f deployment.yaml"
+                sh "kubectl apply -f service.yaml"
             }
         }
         stage('Acceptance test') {
@@ -55,7 +56,8 @@ pipeline {
     }
     post {
         always {
-            sh "kubectl delete -f Kubefile"
+            sh "kubectl delete -f service.yaml"
+            sh "kubectl delete -f deployment.yaml"
         }
     }
 }
