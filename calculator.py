@@ -65,4 +65,3 @@ def calculate():
         return str(c.multiply(num1, num2))
     if operator == 'divide':
         return str(c.divide(num1, num2))
-

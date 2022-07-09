@@ -44,7 +44,7 @@ pipeline {
         }
         stage('Deploying app to staging') {
             steps {
-                sh "docker run -d --rm -p 5001:5002 --name calculator 172.18.0.1:5000/calculator:latest"  // TODO: resolve host ip
+                sh "docker run -d --rm -p 5001:5001 --name calculator 172.18.0.1:5000/calculator:latest"  // TODO: resolve host ip
             }
         }
         stage('Acceptance test') {
