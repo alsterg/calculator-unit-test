@@ -49,8 +49,6 @@ pipeline {
         }
         stage('Acceptance test') {
             steps {
-		def masterIP = InetAddress.localHost.hostAddress
-		println "Master located at ${masterIP}"
                 sh "chmod +x acceptance_test.sh && ./acceptance_test.sh"
             }
         }
