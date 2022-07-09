@@ -44,7 +44,7 @@ pipeline {
         }
         stage('Deploying app to staging') {
             steps {
-                sh "minikube kubectl -- apply -f Kubefile"
+                sh "kubectl apply -f Kubefile"
             }
         }
         stage('Acceptance test') {
@@ -55,7 +55,7 @@ pipeline {
     }
     post {
         always {
-            sh "minikube kubectl -- delete -f Kubefile"
+            sh "kubectl delete -f Kubefile"
         }
     }
 }
