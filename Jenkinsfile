@@ -44,7 +44,7 @@ pipeline {
         }
         stage('Deploying app to staging') {
             steps {
-                sh "docker run -d --rm -p 5001:5001 --name calculator 172.18.0.1:6000/calculator:latest"  // TODO: resolve host ip
+                sh "minikube kubectl -- apply -f Kubefile"
             }
         }
         stage('Acceptance test') {
