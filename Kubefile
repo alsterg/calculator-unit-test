@@ -5,7 +5,12 @@ metadata:
   labels:
     app: calculator
 spec:
-  replicas: 2
+  replicas: 3
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 25%
+      maxSurge: 0
   selector:
     matchLabels:
       app: calculator
@@ -19,6 +24,10 @@ spec:
         image: host.minikube.internal:6000/calculator:latest
         ports:
         - containerPort: 5001
+        readinessProbe:
+          httpGet:
+            path: /calculate?operator=add&num1=2&num2=3
+            port: 5001
 
 apiVersion: v1
 kind: Service
