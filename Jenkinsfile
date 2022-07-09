@@ -55,7 +55,7 @@ pipeline {
     }
     post {
         always {
-            sh "docker stop calculator"
+            sh "minikube kubectl -- delete -f Kubefile"
         }
     }
 }
